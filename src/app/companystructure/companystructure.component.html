@@ -1,0 +1,170 @@
+<div class="wrapper">
+    <!-- Sidebar -->
+    <app-side></app-side>
+    <!-- /Sidebar -->
+    <!-- Page Content -->
+    <div id="content">
+        <!-- Top Navigation -->
+        <app-header></app-header>
+        <!-- /Top Navigation -->
+        <!-- Breadcrumb -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="overview">
+            <span class="ti-home"></span>
+        </a>
+    </li>
+    <li class="breadcrumb-item active">Company Structure</li>
+</ol>
+<!-- /Breadcrumb -->
+<!-- Main Content -->
+<div class="container-fluid">
+    <!-- Page Title -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="block-title">Company Structure</h3>
+        </div>
+    </div>
+    <!-- /Page Title -->
+    <div class="row" *ngIf="corporatestructure">
+        <div class="col-md-12">
+            <div class="widget-area-2 lorvens-box-shadow">
+                <h3 class="widget-title">Company Structure</h3>
+
+                <div class="tree" style="display: inline-block;">
+                    <ul>
+                        <li *ngFor="let item of companyStructuresData">
+                            <a href="companystructure/{{item.level}}">{{item.title}} - {{companyData.companyname}}</a>
+                            <ul>
+                                <li *ngFor="let subitem of item.substructuresone">
+                                    <a href="companystructureedit/{{subitem.id}}">{{subitem.title}}</a>
+                                    <ul class="vertical" *ngFor="let subsubitem of item.substructurestwo">
+                                        <li *ngIf="subsubitem.category==subitem.title">
+                                            <a href="companystructureedit/{{subsubitem.id}}">{{subsubitem.title}}</a>
+                                            <ul class="vertical" *ngFor="let subsubsubitem of item.substructuresthree">
+                                                <li *ngIf="subsubsubitem.category==subsubitem.title">
+                                                    <a href="companystructureedit/{{subsubsubitem.id}}">{{subsubsubitem.title}}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!--<ul>
+                        <li>
+                            <a href="companystructure/corporate">Corporate - {{companyData.companyname}}</a>
+                            <ul>
+                                <li *ngFor="let item of divisionsStructureData">
+                                    <a href="companystructure/{{item.level}}">{{item.title}} {{ getCompanySubcategoriesRecordData('divisions',item.title,'one') }}</a>
+                                    <ul class="vertical">
+                                        <li *ngFor="let subitem of subcategoriesData">
+                                            <a href="companystructure/{{subitem.level}}">{{subitem.title}} {{ getCompanySubcategoriesRecordData('departments',subitem.title,'two') }}</a>
+                                            <ul class="vertical">
+                                                <li *ngFor="let subsubitem of subsubcategoriesData">
+                                                    <a href="companystructure/{{subsubitem.level}}">{{subsubitem.title}} {{ getCompanySubcategoriesRecordData('units',subsubitem.title,'three') }}</a>
+                                                    <ul class="vertical">
+                                                        <li *ngFor="let subsubsubitem of subsubsubcategoriesData">
+                                                            <a href="companystructure/{{subsubsubitem.level}}">{{subsubsubitem.title}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>-->
+                </div>
+
+            </div>							
+        </div>
+    </div>
+    <div class="row" *ngIf="createstructure">
+        <div class="col-md-12">
+            <div class="widget-area-2 lorvens-box-shadow">
+                <h3 class="widget-title">Add New Structure</h3>
+                <form class="widget-form" #form="ngForm" (ngSubmit)="addstructure(form)">
+                    <!-- form-group -->
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <input type="text" name="title" ngModel class="form-control" placeholder="Title">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <select class="form-control" name="level" ngModel required="yes">
+                                <option value="" selected>Select level</option>
+                                <!--<option value="corporate">Add to Corporate</option>
+                                <option value="divisions">Add to Divisions</option>-->
+                                <option value="departments">Add to Departments</option>
+                                <option value="units">Add to Units</option>
+                                <option value="teams">Add to Teams</option>                              
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            <select class="form-control" name="parentlevel" ngModel (change)="getCategoriesRecordData(form.value.parentlevel)" required="yes">
+                                <option value="" selected>Select parent level</option>
+                                <option value="corporate">Corporate</option>
+                                <!--<option value="divisions">Divisions</option>-->
+                                <option value="departments">Departments</option>
+                                <option value="units">Units</option>
+                                <option value="teams">Teams</option>                              
+                            </select>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="parentcategory" ngModel required="yes">
+                                <option value="" selected>Select parent sub-level</option>
+                                <option *ngFor="let categoryitem of categoriesData" [ngValue]="categoryitem.title">{{categoryitem.title}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <textarea name="details" ngModel class="form-control" placeholder="Details"></textarea>
+                        </div>
+                    </div>
+                    <!-- Button -->			
+                    <div class="button-btn-block">
+                        <img src="assets/images/loading.gif" width="50" height="50" *ngIf="formloading" />
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Add</button>
+                        <br>
+                    </div>
+                    <!-- /Button -->
+                </form>
+            </div>							
+        </div>
+    </div>
+    <div class="row" *ngIf="otherstructure">
+        <div class="col-md-12">
+            <br><h3 class="widget-title">{{type | titlecase}} Structures</h3><br>
+            <div class="widget-area-2 lorvens-box-shadow">
+                <!-- List Item -->
+                <div class="lorvens-widget">
+                    <ul class="list-unstyled">
+                        <li class="media" *ngFor="let item of categoriesData">
+                            <img class="mr-3" src="assets/images/category-icon.png" alt="{{ item.title }}">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1"><a href="companystructureedit/{{ item.id }}">{{ item.title }}</a></h5>
+                                <i>Under {{item.parentlevel}} / {{item.category}}</i><br>
+                                {{ item.details }}.
+                            </div><br><br>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /List Item -->
+            </div>							
+        </div>
+    </div>
+</div>
+<!-- Main Content -->
+    </div>
+    <!-- /Page Content -->
+</div>

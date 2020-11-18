@@ -1,0 +1,186 @@
+<div class="wrapper">
+    <!-- Sidebar -->
+    <app-side></app-side>
+    <!-- /Sidebar -->
+    <!-- Page Content -->
+    <div id="content">
+        <!-- Top Navigation -->
+        <app-header></app-header>
+        <!-- /Top Navigation -->
+        <!-- Breadcrumb -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="overview">
+            <span class="ti-home"></span>
+        </a>
+    </li>
+    <li class="breadcrumb-item active">Goals/Perspectives</li>
+</ol>
+<!-- /Breadcrumb -->
+<!-- Main Content -->
+<div class="container-fluid">
+    <!-- Page Title -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="block-title">Company Goals/Perspectives</h3>
+        </div>
+    </div>
+    <!-- /Page Title -->
+    <div class="row" *ngIf="creategoal">
+        <div class="col-md-12">
+            <div class="widget-area-2 lorvens-box-shadow">
+                <h3 class="widget-title">Add New Goal</h3>
+                <form class="widget-form" #form="ngForm" (ngSubmit)="addgoal(form)">
+                    <!-- form-group -->
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <input type="text" placeholder="Title" name="title" ngModel class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <select class="form-control" name="type" ngModel required="yes">
+                                <option value="" selected>Type</option>
+                                <option value="financials">Financials</option>
+                                <option value="customers">Customers</option>
+                                <option value="internalprocesses">Internal Processes</option>
+                                <option value="learninggrowth">Learning Growth</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            <select class="form-control" name="level" ngModel (change)="getCategoriesRecordData(form.value.level)" required="yes">
+                                <option value="" selected>Select level</option>
+                                <option value="corporate">Add to Corporate</option>
+                                <!--<option value="divisions">Add to Divisions</option>-->
+                                <option value="departments">Add to Departments</option>
+                                <option value="units">Add to Units</option>
+                                <option value="teams">Add to Teams</option>                              
+                            </select>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="target" ngModel required="yes">
+                                <option value="" selected>Select sub-level</option>
+                                <option *ngFor="let categoryitem of categoriesData" [ngValue]="categoryitem.title">{{categoryitem.title}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <label for="targetdate">Target date</label>
+                            <input type="date" value="24-12-2020" data-date-format="DD-MMMM-YYYY" placeholder="Target date" name="targetdate" ngModel class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <input type="number" placeholder="Target weight score e.g 100" name="targetscore" ngModel class="form-control">%
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <textarea name="kpi" ngModel class="form-control" placeholder="KPI for measurement"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <textarea name="details" ngModel class="form-control" placeholder="Details"></textarea>
+                        </div>
+                    </div>
+                    <!-- Button -->			
+                    <div class="button-btn-block">
+                        <img src="assets/images/loading.gif" width="50" height="50" *ngIf="formloading" />
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Add</button>
+                        <br>
+                    </div>
+                    <!-- /Button -->
+                </form>
+            </div>							
+        </div>
+    </div>
+
+    <div class="row" *ngIf="viewgoals">
+        <div class="col-md-12">
+            <div class="widget-area-2 lorvens-box-shadow">
+                <h3 class="widget-title">{{type | titlecase}} Goals</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Type</th>
+                                <th>Target</th>
+                                <th>Weight</th>
+                                <th>Score</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of goalsData">
+                                <td><a href="goal/{{ item.id }}">{{ item.title }}</a></td>
+                                <td>{{ item.type }}</td>
+                                <td>{{ item.target }}</td>
+                                <td>{{ item.targetscore }}</td>
+                                <td>{{ item.score }}</td>
+                                <td>
+                                    <span class="badge badge-{{ item.result }}">{{ item.scorerating }}%</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>							
+        </div>
+    </div>
+
+    <div class="row" *ngIf="balancedscorecard">
+        <div class="col-md-12">
+            <div class="widget-area-2 lorvens-box-shadow">
+                <h3 class="widget-title">Balanced Score Card - Company</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Perspectives</th>
+                                <th>Objectives</th>
+                                <th>Measures</th>
+                                <th>Performance Standards</th>
+                                <th>Target Date</th>
+                                <th>Weight</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of goalsData">
+                                <td>{{ item.type }} <br /> {{ item.scorerating }}%</td>
+                                <td>{{ item.title }}</td>
+                                <td>{{ item.details }}</td>
+                                <td>{{ item.kpi }}</td>
+                                <td>{{ item.targetdate }}</td>
+                                <td>
+                                    <span class="badge badge-{{ item.result }}">{{ item.targetscore }}%</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>{{ totalScore }}%</td>
+                                <td colspan="4"></td>
+                                <td>{{ totalWeight }}%</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>							
+        </div>
+    </div>
+</div>
+<!-- Main Content -->
+    </div>
+    <!-- /Page Content -->
+</div>

@@ -1,0 +1,63 @@
+<div class="wrapper">
+    <!-- Sidebar -->
+    <app-side></app-side>
+    <!-- /Sidebar -->
+    <!-- Page Content -->
+    <div id="content">
+        <!-- Top Navigation -->
+        <app-header></app-header>
+        <!-- /Top Navigation -->
+        <!-- Breadcrumb -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="overview">
+            <span class="ti-home"></span>
+        </a>
+    </li>
+    <li class="breadcrumb-item active">Notifications</li>
+</ol>
+<!-- /Breadcrumb -->
+<!-- Main Content -->
+<div class="container-fluid">
+    <!-- Page Title -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="block-title">All Notifications</h3>
+        </div>
+    </div>
+    <!-- /Page Title -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget-area-2 lorvens-box-shadow">
+                <h3 class="widget-title">My Notifications</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Details</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of notificationsData">
+                                <td>{{ item.title }}</td>
+                                <td>{{ item.details }}</td>
+                                <td>{{ item.status }}</td>
+                                <td>{{ item.date }} at {{ item.time }}</td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>							
+        </div>
+    </div>
+</div>
+<!-- Main Content -->
+    </div>
+    <!-- /Page Content -->
+</div>

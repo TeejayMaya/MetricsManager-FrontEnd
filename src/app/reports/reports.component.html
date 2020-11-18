@@ -1,0 +1,85 @@
+<div class="wrapper">
+    <!-- Sidebar -->
+    <app-side></app-side>
+    <!-- /Sidebar -->
+    <!-- Page Content -->
+    <div id="content">
+        <!-- Top Navigation -->
+        <app-header></app-header>
+        <!-- /Top Navigation -->
+        <!-- Breadcrumb -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="overview">
+            <span class="ti-home"></span>
+        </a>
+    </li>
+    <li class="breadcrumb-item active">Reports</li>
+</ol>
+<!-- /Breadcrumb -->
+<!-- Main Content -->
+<div class="container-fluid">
+    <!-- Page Title -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="block-title">Reports</h3>
+        </div>
+    </div>
+    <!-- /Page Title -->
+    <div class="row">
+        <!-- Widget Item -->
+        <div class="col-md-12">
+            <div class="widget-area-2 lorvens-box-shadow">
+                <h3 class="widget-title">Goals Monthly Graph</h3>
+                <div id="goalsChartContainer" class="chart-home" style="height: 255px; width: 100%;"></div>
+            </div>
+        </div>
+        <!-- /Widget Item -->
+    </div>
+    <div class="row">
+        <!-- Widget Item -->
+        <div class="col-sm-6">
+            <div class="widget-area-2 lorvens-box-shadow">
+                <h3 class="widget-title">Goals Statistics</h3>
+                <div id="goalsStatisticsChartContainer" class="chart-home" style="height: 255px; width: 100%;"></div>
+            </div>
+        </div>
+        <!-- /Widget Item -->
+        <!-- Widget Item -->
+        <div class="col-sm-6">
+            <div class="widget-area-2 lorvens-box-shadow">
+                <h3 class="widget-title">Goals Segmentation</h3>
+                <div id="goalsTypeStatisticsChartContainer" class="chart-home" style="height: 255px; width: 100%;"></div>
+            </div>
+        </div>
+        <!-- /Widget Item -->
+        <!-- Widget Item -->
+        <!--<div class="col-md-6">
+                <div class="widget-area-2 progress-status lorvens-box-shadow">
+                    <h3 class="widget-title">This Year Goals Score So Far</h3>
+                    <span>Financial</span>
+                    <div class="progress">
+                        <div class="progress-bar width-pb10" role="progressbar" aria-valuenow="{{userDashboardData.financialsgoalsresult}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>Customer</span>
+                    <div class="progress">
+                        <div class="progress-bar bg-success width-pb25" role="progressbar" aria-valuenow="{{userDashboardData.customersgoalsresult}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>Internal Processes</span>
+                    <div class="progress">
+                        <div class="progress-bar bg-info width-pb50" role="progressbar" aria-valuenow="{{userDashboardData.internalprocessesgoalsresult}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>Learning & Growth</span>
+                    <div class="progress">
+                        <div class="progress-bar bg-warning width-pb75" role="progressbar" aria-valuenow="{{userDashboardData.learninggrowthgoalsresult}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
+                </div>
+        </div>-->
+        <!-- /Widget Item -->
+    </div>
+</div>
+<!-- Main Content -->
+    </div>
+    <!-- /Page Content -->
+</div>

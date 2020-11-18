@@ -1,0 +1,100 @@
+<div class="wrapper">
+    <!-- Sidebar -->
+    <app-side></app-side>
+    <!-- /Sidebar -->
+    <!-- Page Content -->
+    <div id="content">
+        <!-- Top Navigation -->
+        <app-header></app-header>
+        <!-- /Top Navigation -->
+        <!-- Breadcrumb -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="overview">
+            <span class="ti-home"></span>
+        </a>
+    </li>
+    <li class="breadcrumb-item active">Goal/Perspective</li>
+</ol>
+<!-- /Breadcrumb -->
+<!-- Main Content -->
+<div class="container-fluid">
+    <!-- Page Title -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="block-title">Company Goal/Perspective</h3>
+        </div>
+    </div>
+    <!-- /Page Title -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget-area-2 lorvens-box-shadow">
+                <h3 class="widget-title">{{goalData.title}}</h3>
+                <p>{{goalData.type}} / <strong>Status:</strong> {{goalData.status}} / <strong>Target:</strong> {{goalData.target}} / <strong>Weight:</strong> {{goalData.targetscore}} / <strong>Score:</strong> {{goalData.score}} / <strong>Target date:</strong> {{goalData.targetdate}} / <strong>Posted:</strong> {{goalData.date}}</p>
+                <div class="table-responsive">
+                    <h4>Comments</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Author</th>
+                                <th>Details</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of goalCommentsData">
+                                <td>{{ item.username }}</td>
+                                <td>{{ item.details }}</td>
+                                <td>{{ item.date }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>							
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget-area-2 lorvens-box-shadow">
+                <h3 class="widget-title">Add New Comment</h3>
+                <form class="widget-form" #form="ngForm" (ngSubmit)="addgoalcomment(form)">
+                    <!-- form-group -->
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <select class="form-control" name="status" ngModel>
+                                <option value="" selected>Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="on-going">On-going</option>
+                                <option value="failed">Failed</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <input type="text" placeholder="Score" name="score" ngModel class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <textarea name="details" ngModel class="form-control" placeholder="Details"></textarea>
+                        </div>
+                    </div>
+                    <!-- Button -->			
+                    <div class="button-btn-block">
+                        <img src="assets/images/loading.gif" width="50" height="50" *ngIf="formloading" />
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Add</button>
+                        <br>
+                    </div>
+                    <!-- /Button -->
+                </form>
+            </div>							
+        </div>
+    </div>
+</div>
+<!-- Main Content -->
+    </div>
+    <!-- /Page Content -->
+</div>

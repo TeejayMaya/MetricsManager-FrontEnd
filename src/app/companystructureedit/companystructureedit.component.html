@@ -1,0 +1,122 @@
+<div class="wrapper">
+    <!-- Sidebar -->
+    <app-side></app-side>
+    <!-- /Sidebar -->
+    <!-- Page Content -->
+    <div id="content">
+        <!-- Top Navigation -->
+        <app-header></app-header>
+        <!-- /Top Navigation -->
+        <!-- Breadcrumb -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="overview">
+            <span class="ti-home"></span>
+        </a>
+    </li>
+    <li class="breadcrumb-item active">View Company Structure</li>
+</ol>
+<!-- /Breadcrumb -->
+<!-- Main Content -->
+<div class="container-fluid">
+    <!-- Page Title -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="block-title">View Company Structure</h3>
+        </div>
+    </div>
+    <!-- /Page Title -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget-area-2 lorvens-box-shadow">
+                <h3 class="widget-title">{{title}}</h3>
+                <p><strong>Parent Level:</strong> {{companyStructureData.parentlevel}} / <strong>Parent Head:</strong> {{companyStructureData.category}} / <strong>Level:</strong> {{companyStructureData.level}} / <strong>Created:</strong> {{companyStructureData.date}}</p>
+                <p>{{ details }}</p>
+                <div class="table-responsive">
+                    <h4>Members</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Role</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of membersData">
+                                <td>{{ item.username }}</td>
+                                <td>{{ item.position }}</td>
+                                <td>{{ item.details }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>							
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget-area-2 lorvens-box-shadow">
+                <h3 class="widget-title">Group Goals</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Type</th>
+                                <th>Target</th>
+                                <th>Weight</th>
+                                <th>Score</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of goalsData">
+                                <td><a href="goal/{{ item.id }}">{{ item.title }}</a></td>
+                                <td>{{ item.type }}</td>
+                                <td>{{ item.target }}</td>
+                                <td>{{ item.targetscore }}</td>
+                                <td>{{ item.score }}</td>
+                                <td>
+                                    <span class="badge badge-{{ item.result }}">{{ item.scorerating }}%</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>							
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget-area-2 lorvens-box-shadow">
+                <h3 class="widget-title">Edit Structure ({{title}}) <button type="button" (click)="deleteItem(id)" class="btn btn-secondary btn-danger">Delete</button></h3>
+                <form class="widget-form" #form="ngForm" (ngSubmit)="editstructure(form)">
+                    <!-- form-group -->
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <input type="text" name="title" ngModel class="form-control" placeholder="Title">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <textarea name="details" ngModel class="form-control" placeholder="Details"></textarea>
+                        </div>
+                    </div>
+                    <!-- Button -->			
+                    <div class="button-btn-block">
+                        <img src="assets/images/loading.gif" width="50" height="50" *ngIf="formloading" />
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Update</button>
+                        <br>
+                    </div>
+                    <!-- /Button -->
+                </form>
+            </div>							
+        </div>
+    </div>
+</div>
+<!-- Main Content -->
+    </div>
+    <!-- /Page Content -->
+</div>

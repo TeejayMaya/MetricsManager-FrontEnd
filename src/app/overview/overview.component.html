@@ -1,0 +1,150 @@
+<div class="wrapper">
+    <!-- Sidebar -->
+    <app-side></app-side>
+    <!-- /Sidebar -->
+    <!-- Page Content -->
+    <div id="content">
+        <!-- Top Navigation -->
+        <app-header></app-header>
+        <!-- /Top Navigation -->
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="overview.html">
+                    <span class="ti-home"></span>
+                </a>
+            </li>
+            <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+        <!-- /Breadcrumb -->
+        <!-- Main Content -->
+        <div class="container-fluid home">
+            <!-- Page Title -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="block-title">Quick Statistics</h3>
+                </div>
+            </div>
+            <!-- /Page Title -->
+
+            <div class="row">
+                <!-- Widget Item -->
+                <div class="col-md-3">
+                    <div class="widget-area lorvens-box-shadow color-blue">
+                        <div class="widget-left">
+                            <span class="ti-rocket"></span>
+                        </div>
+                        <div class="widget-right">
+                            <h4 class="wiget-title">Total Goals</h4>
+                            <span class="numeric color-blue">{{userDashboardData.totalgoals}}</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Widget Item -->
+                <!-- Widget Item -->
+                <div class="col-md-3">
+                    <div class="widget-area lorvens-box-shadow">
+                        <div class="widget-left">
+                            <span class="ti-user"></span>
+                        </div>
+                        <div class="widget-right">
+                            <h4 class="wiget-title">Total Staffs</h4>
+                            <span class="numeric">{{userDashboardData.totalstaffs}}</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Widget Item -->
+                <!-- Widget Item -->
+                <div class="col-md-3">
+                    <div class="widget-area lorvens-box-shadow color-green">
+                        <div class="widget-left">
+                            <span class="ti-bar-chart"></span>
+                        </div>
+                        <div class="widget-right">
+                            <h4 class="wiget-title">Goals Completed</h4>
+                            <span class="numeric color-green">{{userDashboardData.totalgoalscompleted}}</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Widget Item -->
+                <!-- Widget Item -->
+                <div class="col-md-3">
+                    <div class="widget-area lorvens-box-shadow color-yellow">
+                        <div class="widget-left">
+                            <span class="ti-bar-chart-alt"></span>
+                        </div>
+                        <div class="widget-right">
+                            <h4 class="wiget-title">Goals Pending</h4>
+                            <span class="numeric color-yellow">{{userDashboardData.totalgoalspending}}</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Widget Item -->
+            </div>
+    
+            <div class="row">
+                <!-- Widget Item -->
+                <div class="col-md-12">
+                    <div class="widget-area-2 lorvens-box-shadow">
+                        <h3 class="widget-title">Goals Monthly Graph</h3>
+                        <div id="goalsChartContainer" class="chart-home" style="height: 255px; width: 100%;"></div>
+                    </div>
+                </div>
+                <!-- /Widget Item -->
+                <!-- Widget Item -->
+                <!--<div class="col-md-6">
+                    <div class="widget-area-2 lorvens-box-shadow">
+                        <h3 class="widget-title">Financial Goals Monthly Graph</h3>
+                        <div id="financialGoalsChartContainer" class="chart-home" style="height: 255px; width: 100%;"></div>
+                    </div>
+                </div>-->
+                <!-- /Widget Item -->
+            </div>
+    
+            <div class="row">
+                <!-- Widget Item -->
+                <div class="col-sm-6">
+                    <div class="widget-area-2 lorvens-box-shadow">
+                        <h3 class="widget-title">Goals Statistics</h3>
+                        <div id="goalsStatisticsChartContainer" class="chart-home" style="height: 255px; width: 100%;"></div>
+                    </div>
+                </div>
+                <!-- /Widget Item -->
+                <!-- Widget Item -->
+                <div class="col-sm-6">
+                    <div class="widget-area-2 lorvens-box-shadow">
+                        <h3 class="widget-title">Goals Segmentation</h3>
+                        <div id="goalsTypeStatisticsChartContainer" class="chart-home" style="height: 255px; width: 100%;"></div>
+                    </div>
+                </div>
+                <!-- /Widget Item -->
+                <!-- Widget Item -->
+                <!--<div class="col-md-6">
+                        <div class="widget-area-2 progress-status lorvens-box-shadow">
+                            <h3 class="widget-title">This Year Goals Score So Far</h3>
+                            <span>Financial</span>
+                            <div class="progress">
+                                <div class="progress-bar width-pb10" role="progressbar" aria-valuenow="{{userDashboardData.financialsgoalsresult}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span>Customer</span>
+                            <div class="progress">
+                                <div class="progress-bar bg-success width-pb25" role="progressbar" aria-valuenow="{{userDashboardData.customersgoalsresult}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span>Internal Processes</span>
+                            <div class="progress">
+                                <div class="progress-bar bg-info width-pb50" role="progressbar" aria-valuenow="{{userDashboardData.internalprocessesgoalsresult}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span>Learning & Growth</span>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning width-pb75" role="progressbar" aria-valuenow="{{userDashboardData.learninggrowthgoalsresult}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            
+                        </div>
+                </div>-->
+                <!-- /Widget Item -->
+            </div>
+        </div>
+        <!-- /Main Content -->
+    </div>
+    <!-- /Page Content -->
+</div>

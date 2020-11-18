@@ -1,0 +1,50 @@
+<div id="content" class="animated fadeIn">
+    <div class="logocontainer"><br><img src="assets/images/logo2.png" /><br></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 auth-box">
+                <div class="lorvens-box-shadow">
+                    <h3 class="widget-title">Login</h3>
+                    <form class="widget-form" #form="ngForm" (ngSubmit)="login(form)">
+                        <!-- form-group -->
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <input name="username" ngModel placeholder="Email" class="form-control" required="" type="text" data-validation="length alphanumeric" data-validation-length="3-12" data-validation-error-msg="User name has to be an alphanumeric value (3-12 chars)" data-validation-has-keyup-event="true">
+                            </div>
+                        </div>
+                        <!-- /.form-group -->
+                        <!-- form-group -->
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <input name="password" ngModel placeholder="Password" class="form-control" type="password" data-validation="strength" data-validation-strength="2" data-validation-has-keyup-event="true">
+                            </div>
+                        </div>
+                        <!-- /.form-group -->
+                        <!-- Check Box -->		
+                        <div class="form-check row">
+                            <div class="col-sm-12 text-left">
+                                <div class="custom-control custom-checkbox">
+                                    <input class="custom-control-input" type="checkbox" id="ex-check-2">
+                                    <label class="custom-control-label" for="ex-check-2">Remember Me</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Check Box -->	
+                        <!-- Login Button -->			
+                        <div class="button-btn-block">
+                            <img src="assets/images/loading.gif" width="50" height="50" *ngIf="formloading" />
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                        </div>
+                        <!-- /Login Button -->	
+                        <!-- Links -->	
+                        <div class="auth-footer-text">
+                            <small>New User? <a href="register">Sign up</a> here</small><br>
+                            <small>Forgot password? <a href="forgotpassword">Reset password</a> here</small>
+                        </div>
+                        <!-- /Links -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
