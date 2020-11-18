@@ -1,0 +1,56 @@
+/*===================
+Color : RED 
+*==================*/
+.lorvens-bg {
+	background: #333333;
+    background: -webkit-linear-gradient(to right, #353030, #4c4344);
+    background: linear-gradient(to right, #353030, #4c4344);
+}
+.lorvens-text-color{
+	color: #88c53f;
+}
+.pagination .page-link {
+	color: #88c53f;
+}
+
+.pagination .page-item.active .page-link {
+	background-color: #88c53f;
+	border-color: #88c53f;
+}
+.btn-primary {
+    background-color: #88c53f;
+    border-color: #88c53f;
+}
+.btn-primary:hover {
+    background-color: #88c53f;
+    border-color: #a1c17a;
+}
+.text-round {
+	background: #88c53f;
+}
+.btn-outline-primary {
+    color: #88c53f;
+    border-color: #88c53f;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+	background: #88c53f;
+}
+.btn-hero-primary{
+	background: #88c53f;
+	border-color: #88c53f;
+}
+.media h5{
+	color: #88c53f;
+}
+#faq2 .block-header{
+	background-color: #88c53f;
+}
+#faq1 .block-header {
+    color: #88c53f;
+}
+.widget-title{
+	color: #88c53f;
+}
+.pricing-h2{
+	color: #88c53f;
+}
